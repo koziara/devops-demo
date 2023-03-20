@@ -10,7 +10,7 @@ on:
   jobs:
     # Build job
     build:
-      name: My First Pipeline
+      name: My First Pipeline 1
       # Run on Ubuntu using the latest version
       runs-on: ubuntu-latest
       # Job's steps

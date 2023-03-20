@@ -4,17 +4,21 @@ on:
   workflow_dispatch:
   #Trigger the workflow on push from the master/main branch
   push:
-  branches: [ master]
+  branches: [ master ]
   
   jobs:
-  # Build job
-  build:
-  name: My First Pipeline
-  # Run on Ubuntu using the latest version
-  runs-on: ubuntu-latest
-  # Job's steps
-  steps:
-  # Check-out your repository
-  -uses: actions/checkout@v3
-  -name: Run a one-line script
-  run: echo "Continuous Integration"
+    # Build job
+    build:
+      name: My First Pipeline
+      # Run on Ubuntu using the latest version
+      runs-on: ubuntu-latest
+      # Job's steps
+      steps:
+        # Check-out your repository
+        -uses: actions/checkout@v3
+    
+        -name: To Show Error
+        run: echo "Should fail at this point ..." ; exit 1
+        
+        -name: Run a one-line script 
+         run: echo "Continuous Integration"

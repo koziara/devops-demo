@@ -1,7 +1,10 @@
-# Java version: 17
-ARG VARIANT=17
-FROM mcr.microsoft.com/vscode/devcontainers/java:${VARIANT}
-
-# Install Maven
-ARG MAVEN_VERSION="3.8.7"
-RUN su vscode -c "source /usr/local/sdkman/bin/sdkman-init.sh && sdk install maven \"${MAVEN_VERSION}\""
+# Fetch the Java sdk image
+FROM openjdk:17-alpine
+# Expose port 8080
+EXPOSE 8080
+# set a docker volume if you want
+VOLUME /backend_volume
+# Add the jar file
+ADD /target/*.jar devops-demo-1.0.jar
+# Start the application
+ENTRYPOINT ["java", "-jar", "/devops-demo-1.0.jar"]
